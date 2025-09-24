@@ -1,0 +1,44 @@
+{
+    "Header": {
+        "logo": "Alash Media"
+    },
+    "NavItems": {
+        "Informational": "Informational",
+        "Educational": "Educational",
+        "Biography": "Biography",
+        "Alash": "Alash",
+        "Media": "Media",
+        "Special Project": "Special Project"
+    },
+    "Footer": {
+        "HeaderLinks": {
+            "Informational": "Informational",
+            "Educational": "Educational",
+            "Biography": "Biography",
+            "Alash": "Alash",
+            "Media": "Media",
+            "Special Project": "Special Project"
+        },
+        "FooterNote": "Reproducing or using site materials for commercial purposes is allowed only with the prior written consent of the site owner",
+        "Contact": {
+            "Email": "example@alashmedia",
+            "Phone": "+7 (123) 456-7890",
+            "Address": "Turar Ryskulov Street 49/2, Shymkent 160023, Kazakhstan"
+        },
+        "Legal-info": {
+            "Policy": "Privacy policy",
+            "Terms": "Terms of Use"
+        },
+        "Copyright": "©2025 Alash Media. All rights reserved."
+        
+    },
+    "Headings": {
+        "News": {
+            "Latest": "Latest News",
+            "MostRead": "Most Read",
+            "Quest": "Questions"
+        }
+    }
+
+    
+}

@@ -1,0 +1,49 @@
+{
+  "name": "alashmedia",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "seed": "tsx app/scripts/seed.ts"
+  },
+  "dependencies": {
+    "@formatjs/intl-localematcher": "^0.6.1",
+    "@heroicons/react": "^2.2.0",
+    "@vercel/blob": "^1.1.1",
+    "axios": "^1.11.0",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "clsx": "^2.1.1",
+    "dotenv": "^16.5.0",
+    "next": "15.3.3",
+    "next-auth": "5.0.0-beta.29",
+    "next-intl": "^4.3.4",
+    "pg": "^8.16.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
+    "react-quill-new": "^3.4.6",
+    "react-select": "^5.10.2",
+    "use-debounce": "^10.0.5",
+    "uuid": "^11.1.0",
+    "uuidv4": "^6.2.13",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/pg": "^8.15.4",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.3",
+    "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.2",
+    "typescript": "^5"
+  }
+}

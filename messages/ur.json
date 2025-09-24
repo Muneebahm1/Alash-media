@@ -1,0 +1,14 @@
+{
+    "Header": {
+        "logo": "الاش میڈیا"
+    },
+    "NavItems": {
+        "Informational": "معلوماتی",
+        "Educational": "تعلیمی",
+        "Biography": "سیرت",
+        "Alash": "الاش",
+        "Media": "میڈیا",
+        "Special Project": "خصوصی پروجیکٹ"
+    }
+   
+}

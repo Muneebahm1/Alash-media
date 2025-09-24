@@ -1,0 +1,42 @@
+{
+    "Header": {
+        "logo": "Алаш медиасы"
+    },
+    "NavItems": {
+        "Informational": "Ақпараттық",
+        "Educational": "Тәрбиелік",
+        "Biography": "Өмірбаяны",
+        "Alash": "Алаш",
+        "Media": "БАҚ",
+        "Special Project": "Арнайы жоба"
+    },
+    "Footer": {
+        "HeaderLinks": {
+            "Informational": "Ақпараттық",
+            "Educational": "Тәрбиелік",
+            "Biography": "Өмірбаяны",
+            "Alash": "Алаш",
+            "Media": "БАҚ",
+            "Special Project": "Арнайы жоба"
+        },
+        "FooterNote": "Сайт материалдарын коммерциялық мақсатта көшіруге немесе пайдалануға сайт иесінің алдын ала жазбаша келісімімен ғана рұқсат етіледі",
+        "Contact": {
+            "Email": "example@alashmedia",
+            "Phone": "+7 (123) 456-7890",
+            "Address": "Тұрар Рысқұлов көшесі 49/2, Шымкент 160023, Қазақстан"
+        },
+        "Legal-info": {
+            "Policy": "Құпиялылық саясаты",
+            "Terms": "Пайдалану шарттары"
+        },
+        "Copyright": "©2025 Alash Media. Барлық құқықтар қорғалған."
+    },
+    "Headings": {
+        "News": {
+            "Latest": "Соңғы жаңалықтар",
+            "MostRead": "Ең көп оқылған",
+            "Quest": "Сұрақтар"
+        }
+    }
+   
+}

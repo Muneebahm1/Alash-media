@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+:root {
+  --primary-color: #181D27;
+}
+
+body {
+  color: var(--primary-color);
+  background-color: #F1F2F1;
+}
+/* .search-main { background-color: #F1F2F1; } */
