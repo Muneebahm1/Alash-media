@@ -26,23 +26,22 @@ export default async function LocaleLayout({
   
 }: {
   children: React.ReactNode;
-  params: Promise<{locale: string}>;
-  searchParams?: Promise<{
+  params: { locale: string };
+  searchParams?: {
     title?: string;
-    searchquery: string;
+    searchquery?: string;
     page?: string;
     pathName?: string;
-    
-    }>
+  };
   
   
 }) {
-  const {locale} = await params; 
+  const { locale } = params; 
   //const locale = await getLocale();
        
   //const searchSlug = searchParams?.title?.toString() || '';
-  const tquery = (await searchParams)?.searchquery || '';
-  const tcurrentPage = Number((await searchParams)?.page) || 1
+  const tquery = searchParams?.searchquery || '';
+  const tcurrentPage = Number(searchParams?.page) || 1
   const totalPages = await fetchSearchContentPages(tquery);
   
   if (!hasLocale(routing.locales, locale)) {
@@ -67,3 +66,4 @@ export default async function LocaleLayout({
     </NextIntlClientProvider>
   );
 }
+
