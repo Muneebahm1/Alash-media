@@ -29,7 +29,9 @@ export default async function Home(props:{
   //const searchSlug = searchParams?.title?.toString() || '';
   const tquery = searchParams?.searchquery || '';
   const tcurrentPage = Number(searchParams?.page) || 1;
-  const totalPages = await fetchSearchContentPages(tquery);
+  const tsort = (searchParams as any)?.sort as ('relevance'|'newest'|'oldest') | undefined;
+  const ttime = (searchParams as any)?.time as ('any'|'24h'|'week'|'month') | undefined;
+  const totalPages = await fetchSearchContentPages(tquery, { time: ttime || 'any' });
     
   console.log(`Search Content Input Text = ${tquery}`);
     
@@ -51,16 +53,15 @@ export default async function Home(props:{
           <HorizontalAdd key="hadd2" />,
           <Interview key="interview" langu = {locale} />,
           <Authors key="authors" langu = {locale} />
-          ]}
         //otherComponents={[<Highlights />, <News title=" " />]} 
         allTopics = {<Alltopics />}
         />
       ) : (
         <div className="max-w-screen-xl w-full mx-auto md:w-3/4 mt-1 bg-white p-4">
-          <SearchContent tagquery={tquery} tagcurrentPage= {tcurrentPage} />
-            <div className='mt-12 flex justify-center'>
-              <Pagination totalPages={totalPages} />
-            </div>
+          <SearchContent tagquery={tquery} tagcurrentPage= {tcurrentPage} sort={tsort || 'relevance'} time={ttime || 'any'} />
+          <div className='mt-12 flex justify-center'>
+            <Pagination totalPages={totalPages} />
+          </div>
         </div>
       )}
     </div>

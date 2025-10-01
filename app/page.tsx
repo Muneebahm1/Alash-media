@@ -32,7 +32,9 @@ export default async function Home(props:{
   const searchParams = await props.searchParams;
   const tquery = searchParams?.searchquery || '';
   const tcurrentPage = Number(searchParams?.page) || 1;
-  const totalPages = await fetchSearchContentPages(tquery);
+  const tsort = (searchParams as any)?.sort as ('relevance'|'newest'|'oldest') | undefined;
+  const ttime = (searchParams as any)?.time as ('any'|'24h'|'week'|'month') | undefined;
+  const totalPages = await fetchSearchContentPages(tquery, { time: ttime || 'any' });
   console.log(`Search Content Input Text = ${tquery}`);
  //console.log(ctitle);
   const messages = await getMessages();
@@ -66,12 +68,12 @@ return (
       ) : (
         // Render this component if tquery has a value
         <div className="max-w-screen-xl w-full mx-auto md:w-3/4 mt-1  p-4">
-          <SearchContent tagquery={tquery} tagcurrentPage= {tcurrentPage} />
+          <SearchContent tagquery={tquery} tagcurrentPage= {tcurrentPage} sort={tsort || 'relevance'} time={ttime || 'any'} />
           {totalPages > 1 && (
-  <div className="...">
-    <Pagination totalPages={totalPages} />
-  </div>
-)}
+            <div className="...">
+              <Pagination totalPages={totalPages} />
+            </div>
+          )}
         </div>
         
       )}

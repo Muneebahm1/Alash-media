@@ -6,7 +6,8 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import {z} from 'zod';
 import axios from 'axios'
-import { put } from '@vercel/blob';
+import {put} from '@vercel/blob';
+import {uploadMediaOnServer} from '@/app/lib/server/utils';
 
 
 export async function authenticate(prevState: string | undefined,
@@ -107,16 +108,14 @@ export async function publishNews(id:string | null,actionType: string,formData?:
             return {message: "Failed to upload image."};
         }*/
         if (media && media.size > 0) {
-            try {    
-                const blob = await put(media.name, media, {
-                access: 'public',
-                addRandomSuffix: true,
-                });
-                vimage_url = blob.url;
-            }
-            catch(error) {
-                console.log(`Blob Url on Vercel:${vimage_url}`)
-                console.error("Blob Image upload failed:", error);
+            try {
+                // Save author image to local public/images/authors and get a public URL path
+                vimage_url = await uploadMediaOnServer(media, 'images/authors');
+            } catch (error) {
+                console.error('Local image upload failed:', error);
+                // If desired, you could fallback to Vercel Blob here
+                // const blob = await put(media.name, media, { access: 'public', addRandomSuffix: true });
+                // vimage_url = blob.url;
             }
         }
 
@@ -304,16 +303,12 @@ export async function addAuthor(id:string | null,actionType: string,formData?: F
         }*/
 
         if (media && media.size > 0) {
-            try {    
-                const blob = await put(media.name, media, {
-                access: 'public',
-                addRandomSuffix: true,
-                });
-                vimage_url = blob.url;
+            try {
+                // Save author image locally to public/images/authors and get a public URL path
+                vimage_url = await uploadMediaOnServer(media, 'images/authors');
             }
             catch(error) {
-                console.log(`Blob Url on Vercel:${vimage_url}`)
-                console.error("Blob Image upload failed:", error);
+                console.error('Local image upload failed:', error);
             }
         }
 

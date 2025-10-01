@@ -1,6 +1,8 @@
 import { fetchMostReadNews } from "@/app/lib/data";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import Seeall_MostRead from "@/app/ui/components/seeall_mostread";
+import Seeall_MostRead_News from "@/app/ui/components/seeall_mostread_news";
 
 export default async function MostReadNews({lang}:{lang:string}) {
   const mostReadNews = await fetchMostReadNews(lang)
@@ -21,7 +23,12 @@ export default async function MostReadNews({lang}:{lang:string}) {
               <p  className='pt-2 text-[16px] font-bold w-full hover:text-[#068509]'><span className='text-xs text-purple-800 pr-1'>{newsTime}</span>{mostRead.title}</p>
             </Link>
           ))
-        }         
+        }
+        <div className="flex flex-rows justify-end mt-2">
+          <Seeall_MostRead>
+            <Seeall_MostRead_News lang={lang} />
+          </Seeall_MostRead>
+        </div>
     </div>
     
   )

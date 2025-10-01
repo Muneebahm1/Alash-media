@@ -13,6 +13,7 @@ const page = async (props:{
     searchquery: string;
     page?: string;
     pathName?: string;
+    subcategory_name?: string;
 
     }>}) => {
   
@@ -23,13 +24,14 @@ const page = async (props:{
   const cquery = searchParams?.category_name || " ";
   
   const tquery = searchParams?.searchquery || '';
+  const selectedSubcat = searchParams?.subcategory_name || '';
   const tcurrentPage = Number(searchParams?.page) || 1
   const totalPages = await fetchSearchContentPages(tquery);
 
   return (
     <div>
        {tquery === ''? (
-        <CategoryHeader ctquery = {cquery} langu = {locale}/>
+        <CategoryHeader ctquery={cquery} langu={locale} selectedSubcat={selectedSubcat} />
        ) : 
        (
         <div className="max-w-screen-xl w-full mx-auto md:w-3/4 mt-1 bg-white p-4">

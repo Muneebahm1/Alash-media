@@ -8,7 +8,7 @@ import { useState,useEffect } from 'react';
 import { getWeather } from '@/app/lib/actions';
 import type { WeatherData } from '@/app/lib/definitions';
 
-const NavLinks = [
+export const NavLinks = [
         {
             id: 1,
             name: 'Informational',

@@ -21,6 +21,7 @@
     "next": "15.3.3",
     "next-auth": "5.0.0-beta.29",
     "next-intl": "^4.3.4",
+    "nextjs-toploader": "^3.9.17",
     "pg": "^8.16.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -1,4 +1,5 @@
 import TagNewsList from "@/app/ui/components/tagnewslist";
+import TopicsSearch from "@/app/ui/home/topicssearch";
 import { fetchSearchContentPages } from "@/app/lib/data";
 import SearchContent from "@/app/ui/components/searchcontent";
 import Pagination from "@/app/ui/dashboard/pagination";
@@ -27,19 +28,23 @@ const page = async (props:{
   
   return (
     <div>
-        {tquery === ''? (
-          <TagNewsList tagname = {tagName} language = {locale}/>
-        ) : 
-        (
-          <div className="max-w-screen-xl w-full mx-auto md:w-3/4 mt-1 bg-white p-4">
-            <SearchContent tagquery={tquery} tagcurrentPage= {tcurrentPage} />
-              <div className='mt-12 flex justify-center'>
-                <Pagination totalPages={totalPages} />
-              </div>
+      {tquery === '' ? (
+        <>
+          <div className="mx-auto md:mx-[120px] bg-white p-4 mt-1">
+            <div className="w-full md:w-96">
+              <TopicsSearch />
+            </div>
           </div>
-        )}
-        
-        
+          <TagNewsList tagname={tagName} language={locale} />
+        </>
+      ) : (
+        <div className="max-w-screen-xl w-full mx-auto md:w-3/4 mt-1 bg-white p-4">
+          <SearchContent tagquery={tquery} tagcurrentPage={tcurrentPage} />
+          <div className='mt-12 flex justify-center'>
+            <Pagination totalPages={totalPages} />
+          </div>
+        </div>
+      )}
     </div>
   )
 }

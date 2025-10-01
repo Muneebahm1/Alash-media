@@ -85,6 +85,10 @@ const Footer = () => {
                         )
                     })
                     }
+                    {/* Direct link to Authors page */}
+                    <Link href={'/authors'}>
+                        <p>Authors</p>
+                    </Link>
                     </div>
                 </div>
                 

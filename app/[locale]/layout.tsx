@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { inter } from '@/app/ui/fonts';
 import "@/app/globals.css";
-import Head from "next/head";
 import {hasLocale} from 'next-intl';
 import { notFound } from 'next/navigation';
 import {routing} from '@/i18n/routing';
@@ -53,29 +52,20 @@ export default async function LocaleLayout({
   }
   const messages = await getMessages();
   return (
-    <html lang={locale}>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      <body
-        className={`${inter.className} antialiased`} suppressHydrationWarning={true}
-      >
-        <NextIntlClientProvider messages= {messages}>
-          <Header />
-          <Subheader />
-          {tquery === ''? (
-            <main>{children}</main>
-          ):(
-            <div className="max-w-screen-xl w-full mx-auto md:w-3/4 mt-1 bg-white p-4 ">
-              <SearchContent tagquery={tquery} tagcurrentPage= {tcurrentPage} />
-              <div className='mt-12 flex justify-center'>
-                <Pagination totalPages={totalPages} />
-              </div>
-            </div>
-          )}
-          <Footer />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages}>
+      <Header />
+      <Subheader />
+      {tquery === '' ? (
+        <main>{children}</main>
+      ) : (
+        <div className="max-w-screen-xl w-full mx-auto md:w-3/4 mt-1 bg-white p-4 ">
+          <SearchContent tagquery={tquery} tagcurrentPage={tcurrentPage} />
+          <div className='mt-12 flex justify-center'>
+            <Pagination totalPages={totalPages} />
+          </div>
+        </div>
+      )}
+      <Footer />
+    </NextIntlClientProvider>
   );
 }

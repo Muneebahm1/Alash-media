@@ -2,12 +2,7 @@
 import { useSearchParams,usePathname,useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline"; 
-
-type SearchProps = {
-  variant?: 'default' | 'menu';
-};
-
-const Search = ({ variant = 'default' }: SearchProps) => {
+const Search = () => {
   const searchParams = useSearchParams();
   const pathName = usePathname();
   const {replace} = useRouter();
@@ -25,12 +20,6 @@ const Search = ({ variant = 'default' }: SearchProps) => {
     //console.log(inputtext);
     console.log(`${pathName}?${params.toString()}`);
   },300)
-  const isMenu = variant === 'menu';
-  const inputClasses = isMenu
-    ? 'w-full h-9 pl-9 pr-2 bg-transparent border border-white/40 rounded-lg placeholder-white/80 text-white'
-    : 'w-full h-9 pl-9 pr-2 bg-white border border-gray-400 rounded-lg placeholder-gray-400';
-  const iconClasses = isMenu ? 'text-white/80' : 'text-gray-500';
-
   return (
     <div className="w-full">
     <div className="flex flex-row items-center gap-2">
@@ -38,12 +27,12 @@ const Search = ({ variant = 'default' }: SearchProps) => {
         Search
       </label> */}
       <div className="relative w-full md:w-full">
-        <MagnifyingGlassIcon className={`absolute left-2 top-1/2 -translate-y-1/2 w-5 h-5 ${iconClasses}`} />
+        <MagnifyingGlassIcon className="absolute left-2 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
         <input
           onChange={(e) => handleSearch(e.target.value)}
-          placeholder="Search"
+          placeholder="Search author name"
           defaultValue={searchParams.get("searchquery")?.toString()}
-          className={inputClasses}
+          className="w-full h-9 pl-9 pr-2 bg-white border border-gray-400 rounded-lg placeholder-gray-400"
         />
       </div>
     </div>

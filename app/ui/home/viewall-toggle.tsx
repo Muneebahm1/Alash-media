@@ -19,7 +19,7 @@ const ViewAllToggle = ({trendingTopics,otherComponents,allTopics}:ViewAllToggleP
         {
             isViewAllClicked ? (
                 <>{allTopics}
-                  <div className='flex justify-end mx-[120px]'>
+                  <div className='flex justify-end px-4 md:mx-[120px]'>
                     <button onClick={handleGoBackClick} className='cursor-pointer justify-end p-2 font-bold hover:text-[#068509]'>View Current</button>  
                   </div>
                   

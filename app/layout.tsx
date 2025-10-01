@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { inter } from '@/app/ui/fonts';
 import "./globals.css";
 import Head from "next/head";
+import TopLoader from "@/app/ui/components/toploader";
 
 export const metadata: Metadata = {
   title: "Alashmedia.kz",
@@ -27,6 +28,7 @@ export default async function RootLayout({
       <body
         className={`${inter.className} antialiased`} suppressHydrationWarning={true}
       >
+        <TopLoader />
         {children}
       </body>
     </html>

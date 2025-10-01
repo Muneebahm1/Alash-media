@@ -71,6 +71,22 @@ const subcategories = [
     subcategory_name: 'Politics',
     category_id: categories[0].category_id,
     },
+    // Special Project subcategories
+    {
+    subcategory_id: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    subcategory_name: 'Documentary',
+    category_id: categories[5].category_id, // Special Project category
+    },
+    {
+    subcategory_id: 'b2c3d4e5-f6a7-4901-bcde-f23456789012',
+    subcategory_name: 'Investigation',
+    category_id: categories[5].category_id, // Special Project category
+    },
+    {
+    subcategory_id: 'c3d4e5f6-a7b8-4012-cdef-345678901234',
+    subcategory_name: 'Feature Story',
+    category_id: categories[5].category_id, // Special Project category
+    },
 
 ];
 const news = [
@@ -104,7 +120,7 @@ const news = [
     {
         id: '865b83f8-ba3e-43f8-adf6-845b4947b400',
         author_id: authors[2].id,
-        category_id: categories[0].category_id,
+        category_id: categories[1].category_id,
         subcategory_id: subcategories[1].subcategory_id,
         title: `Duis et fringilla dui, eget fermentum neque. 
         Praesent rutrum sed felis eu tincidunt. 
@@ -163,7 +179,155 @@ Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
         view_count: 0,
         date_time: '2025-06-20 11:10:00',
     },
+    // Special Project news articles
+    {
+        id: '5a1f7f2b-8e3a-4a3c-b9f1-9a2c1d7e4b10',
+        author_id: authors[0].id,
+        category_id: categories[5].category_id, // Special Project
+        subcategory_id: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890', // Documentary
+        title: `Climate Change Impact: A Deep Dive into Kazakhstan's Environmental Challenges`,
+        subtitle: `An in-depth documentary exploring how climate change is affecting Kazakhstan's agriculture, water resources, and urban development.`,
+        image_url: '/images/special-projects/climate-documentary.jpg',
+        content: `This comprehensive documentary project examines the multifaceted impact of climate change on Kazakhstan. Through extensive research and interviews with local experts, farmers, and government officials, we explore how rising temperatures and changing precipitation patterns are reshaping the country's landscape.
 
+        The project reveals critical insights into water scarcity issues affecting the Aral Sea region, the challenges facing traditional agriculture in southern Kazakhstan, and innovative adaptation strategies being implemented across the nation. Our investigation spans six months of fieldwork, covering over 2,000 kilometers and featuring testimonies from more than 50 stakeholders.
+
+        Key findings include a 15% decrease in agricultural productivity in drought-affected regions, the emergence of new climate-resilient farming techniques, and government initiatives aimed at sustainable development. The documentary also highlights success stories of communities that have successfully adapted to changing environmental conditions.
+
+        This special project combines data journalism with compelling human stories, offering viewers a comprehensive understanding of one of the most pressing issues facing Kazakhstan today. Through interactive maps, infographics, and video testimonials, we present a multi-layered narrative that goes beyond traditional reporting.`,
+        slug: 'climate-change-impact-kazakhstan-documentary',
+        section: 'Special Projects',
+        view_count: 0,
+        read_time: 12,
+        date_time: '2024-12-15 09:00:00',
+    },
+    {
+        id: '3c9e2d74-1b6a-4f0a-92d3-5e6f7a8b9c01',
+        author_id: authors[2].id,
+        category_id: categories[5].category_id, // Special Project
+        subcategory_id: 'b2c3d4e5-f6a7-4901-bcde-f23456789012', // Investigation
+        title: `Following the Money: An Investigation into Public Procurement Transparency`,
+        subtitle: `A six-month investigative project examining transparency and accountability in government procurement processes across major cities.`,
+        image_url: '/images/special-projects/procurement-investigation.jpg',
+        content: `This investigative special project delves deep into the complex world of public procurement, analyzing contracts worth over 500 billion tenge across multiple government agencies. Using freedom of information requests, data analysis, and source interviews, our team uncovered patterns that raise important questions about transparency and efficiency.
+
+        The investigation employed advanced data analysis techniques to examine thousands of procurement records, identifying unusual bidding patterns, potential conflicts of interest, and cases where proper procedures may not have been followed. Our methodology included cross-referencing company ownership data, analyzing bid submission patterns, and conducting extensive interviews with procurement officials, contractors, and oversight bodies.
+
+        Key revelations include instances where single companies won multiple large contracts through subsidiaries, cases of unusually high pricing compared to market rates, and gaps in the current oversight system. The project also highlights positive examples of transparent procurement practices and recommendations for systemic improvements.
+
+        This investigation represents months of meticulous research, involving collaboration with legal experts, data scientists, and transparency advocates. The findings have been shared with relevant authorities and have sparked important discussions about procurement reform. The project includes interactive visualizations showing procurement networks and spending patterns across different sectors.`,
+        slug: 'public-procurement-transparency-investigation',
+        section: 'Special Projects',
+        view_count: 0,
+        read_time: 18,
+        date_time: '2024-11-20 14:30:00',
+    },
+    {
+        id: '9d2a7c35-6e41-4b8f-8a7e-2c3d4e5f6a70',
+        author_id: authors[1].id,
+        category_id: categories[5].category_id, // Special Project
+        subcategory_id: 'c3d4e5f6-a7b8-4012-cdef-345678901234', // Feature Story
+        title: `Digital Nomads in Almaty: How Remote Work is Transforming Kazakhstan's Largest City`,
+        subtitle: `A comprehensive feature exploring the growing digital nomad community in Almaty and its impact on local economy, culture, and urban development.`,
+        image_url: '/images/special-projects/digital-nomads-almaty.jpg',
+        content: `This feature story project explores the fascinating phenomenon of digital nomadism in Almaty, documenting how remote workers from around the world are choosing Kazakhstan's largest city as their temporary or permanent base. Through in-depth interviews, economic analysis, and cultural observation, we present a comprehensive picture of this growing trend.
+
+        The project follows the stories of 25 digital nomads from 15 different countries, examining their motivations for choosing Almaty, their experiences navigating local bureaucracy, and their contributions to the local economy. We analyze data on co-working space growth, rental market changes, and the emergence of nomad-friendly services and communities.
+
+        Our research reveals that digital nomads contribute an estimated 2.5 billion tenge annually to Almaty's economy through accommodation, dining, transportation, and entertainment spending. The project also examines challenges, including visa regulations, language barriers, and infrastructure limitations that affect the nomad experience.
+
+        The feature includes profiles of successful nomad entrepreneurs who have started businesses in Kazakhstan, local business owners who have adapted their services for international remote workers, and government officials working on policies to attract digital talent. Interactive maps show nomad hotspots, cost comparisons with other popular nomad destinations, and testimonials from both nomads and locals.
+
+        This special project combines human interest storytelling with economic analysis, offering insights into how global remote work trends are reshaping urban landscapes in unexpected places. The story is told through multimedia elements including video interviews, photo essays, and data visualizations.`,
+        slug: 'digital-nomads-almaty-remote-work-transformation',
+        section: 'Special Projects',
+        view_count: 0,
+        read_time: 15,
+        date_time: '2024-10-05 11:15:00',
+    },
+    {
+        id: '2f7b9a4c-3e1d-4c5a-9b8f-1a2b3c4d5e6f',
+        author_id: authors[0].id,
+        category_id: categories[5].category_id, // Special Project
+        subcategory_id: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890', // Documentary
+        title: `Preserving Heritage: The Last Masters of Traditional Kazakh Crafts`,
+        subtitle: `A documentary project celebrating the artisans keeping ancient Kazakh crafts alive and exploring efforts to pass these skills to new generations.`,
+        image_url: '/logo.png',
+        content: `This documentary special project celebrates the remarkable artisans who continue to practice traditional Kazakh crafts, from felt-making and carpet weaving to jewelry crafting and leatherwork. Over eight months, our team traveled across Kazakhstan to document these living treasures and the challenges they face in preserving their ancient skills.
+
+        The project features intimate portraits of master craftspeople, some of whom are the last practitioners of their particular art form. We document their techniques, learn about the cultural significance of their work, and explore innovative approaches to teaching these skills to younger generations. The documentary includes rare footage of traditional techniques that have been passed down through families for centuries.
+
+        Our investigation reveals both the challenges and opportunities facing traditional crafts in modern Kazakhstan. While globalization and urbanization threaten some practices, we also discover inspiring examples of young artisans who are finding new markets for traditional products and innovative ways to blend ancient techniques with contemporary design.
+
+        The project includes collaborations with cultural institutions, craft cooperatives, and educational programs working to preserve these traditions. We examine successful models from other countries and explore how digital platforms are helping Kazakh artisans reach global markets while maintaining the authenticity of their work.
+
+        This multimedia documentary combines stunning visual documentation of craft techniques with thoughtful analysis of cultural preservation challenges. The project includes an interactive online exhibition, educational materials for schools, and a traveling physical exhibition that has been displayed in museums across Kazakhstan.`,
+        slug: 'preserving-heritage-traditional-kazakh-crafts-masters',
+        section: 'Special Projects',
+        view_count: 0,
+        read_time: 20,
+        date_time: '2024-09-12 16:45:00',
+    },
+    {
+        id: 'a7f5d3c2-1b4e-49ab-8cde-7e6f5a4b3c21',
+        author_id: authors[2].id,
+        category_id: categories[5].category_id,
+        subcategory_id: 'b2c3d4e5-f6a7-4901-bcde-f23456789012', // Investigation
+        title: `Road Safety Audit: Are Our Highways Ready for 2030?`,
+        subtitle: `An investigation into infrastructure safety, maintenance cycles, and budget utilization across regions.`,
+        image_url: '/footer-logo.png',
+        content: `We analyzed five years of accident data, tender documents, and maintenance logs across three major corridors. The project surfaces discrepancies between planned and delivered outcomes and highlights best practices from regions with improved safety indices.`,
+        slug: 'road-safety-audit-highways-2030',
+        section: 'Special Projects',
+        view_count: 0,
+        read_time: 11,
+        date_time: '2024-08-22 10:00:00',
+    },
+    {
+        id: 'b8e6c4d2-3a5f-41b9-9dce-5f6a7b8c9d10',
+        author_id: authors[1].id,
+        category_id: categories[5].category_id,
+        subcategory_id: 'c3d4e5f6-a7b8-4012-cdef-345678901234', // Feature Story
+        title: `From Steppe to Startup: Young Founders Building the Future`,
+        subtitle: `Profiles of emerging founders outside traditional tech hubs, and the ecosystems supporting them.`,
+        image_url: '/logo.png',
+        content: `A cross-country feature on young founders creating real-world solutions in agritech, logistics, and education. Includes funding maps, accelerator timelines, and founder toolkits.`,
+        slug: 'from-steppe-to-startup-young-founders',
+        section: 'Special Projects',
+        view_count: 0,
+        read_time: 9,
+        date_time: '2024-07-10 12:40:00',
+    },
+    {
+        id: 'c9d7e5f3-4b6a-42ad-8f1e-0a2b3c4d5e6f',
+        author_id: authors[0].id,
+        category_id: categories[5].category_id,
+        subcategory_id: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890', // Documentary
+        title: `Water Lines: The Invisible Network Powering Our Cities`,
+        subtitle: `A documentary mapping the life of water from source to sink, and the communities that keep it flowing.`,
+        image_url: '/footer-logo.png',
+        content: `Shot across three seasons, this project documents the supply chain of urban water systems, the workers behind them, and the innovations making them more resilient to climate pressure.`,
+        slug: 'water-lines-documentary-urban-systems',
+        section: 'Special Projects',
+        view_count: 0,
+        read_time: 14,
+        date_time: '2024-06-18 08:25:00',
+    },
+    {
+        id: 'd0e1f2a3-5b6c-47de-9f01-2a3b4c5d6e7f',
+        author_id: authors[2].id,
+        category_id: categories[5].category_id,
+        subcategory_id: 'b2c3d4e5-f6a7-4901-bcde-f23456789012', // Investigation
+        title: `School Air Quality: Measuring What Children Breathe Indoors`,
+        subtitle: `A data-driven investigation into CO2, PM2.5, and ventilation across public schools.`,
+        image_url: '/logo.png',
+        content: `Using portable sensors and transparent methodology, we measured indoor air across 30 schools and correlated findings with attendance and reported headaches. Results inform a set of low-cost recommendations for administrators.`,
+        slug: 'school-air-quality-measurement-investigation',
+        section: 'Special Projects',
+        view_count: 0,
+        read_time: 10,
+        date_time: '2024-05-02 09:55:00',
+    },
 ];
 
 const translations = [
@@ -225,7 +389,6 @@ Aliquam malesuada feugiat ante, ut semper velit placerat sit amet. Nullam conseq
         language: 'ru',
         
     },
-    
 ];
 
 const tags = [

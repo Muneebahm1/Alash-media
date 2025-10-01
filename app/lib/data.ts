@@ -10,6 +10,37 @@ export async function fetchTrendingTopics() {
         LIMIT 7`);
     return trendingTopics;
 }
+
+export async function fetchSeeMostReadNews(lang: string) {
+    let mostReadNews = null;
+    if (lang === 'kk') {
+        mostReadNews = await taiconn.query(`SELECT news.id as id,authors.name as author_name,tr.title as title,news.slug as slug,news.section as section,
+            news.date_time::text as date_time 
+            FROM news JOIN authors ON news.author_id = authors.id
+            JOIN translations tr ON news.id = tr.news_id
+            WHERE news.section = 'Most Read News' and tr.language = 'kk'
+            ORDER BY news.date_time DESC
+            OFFSET 5 LIMIT 5`);
+    }
+    else if (lang === 'ru') {
+        mostReadNews = await taiconn.query(`SELECT news.id as id,authors.name as author_name,tr.title as title,news.slug as slug,news.section as section,
+            news.date_time::text as date_time 
+            FROM news JOIN authors ON news.author_id = authors.id
+            JOIN translations tr ON news.id = tr.news_id
+            WHERE news.section = 'Most Read News' and tr.language = 'ru'
+            ORDER BY news.date_time DESC
+            OFFSET 5 LIMIT 5`);
+    }
+    else {
+        mostReadNews = await taiconn.query(`SELECT news.id as id,authors.name as author_name,news.title as title,news.slug as slug,news.section as section,
+            news.date_time::text as date_time 
+            FROM news JOIN authors ON news.author_id = authors.id
+            WHERE news.section = 'Most Read News'
+            ORDER BY news.date_time DESC
+            OFFSET 5 LIMIT 5`);
+    }
+    return mostReadNews;
+}
 export async function fetchAllTopics() {
     const allTopics = await taiconn.query(`SELECT id,name,image_url AS image_path
         FROM tags
@@ -563,29 +594,54 @@ export async function fetchAuthorsListPages(query: string) {
 export async function fetchSearchContent(
   query: string,
   currentPage: number,
+  options?: {
+    sortBy?: 'relevance' | 'newest' | 'oldest';
+    time?: 'any' | '24h' | 'week' | 'month';
+  },
 ) {
-    const offset = (currentPage - 1) * ITEMS_PER_PAGE;
-    try {
-        const centents = await taiconn.query(`SELECT news.id,news.title as title,news.subtitle as subtitle,news.image_url as image_url,
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+  const sortBy = options?.sortBy || 'relevance';
+  const time = options?.time || 'any';
+
+  // Determine ORDER BY
+  const orderByClause =
+    sortBy === 'oldest' ? 'ORDER BY news.date_time ASC' : 'ORDER BY news.date_time DESC';
+
+  // Determine optional time filter
+  let timeFilter = '';
+  if (time === '24h') {
+    timeFilter = " AND news.date_time >= NOW() - INTERVAL '1 day'";
+  } else if (time === 'week') {
+    timeFilter = " AND news.date_time >= NOW() - INTERVAL '7 days'";
+  } else if (time === 'month') {
+    timeFilter = " AND news.date_time >= NOW() - INTERVAL '1 month'";
+  }
+
+  try {
+    const sql = `SELECT news.id,news.title as title,news.subtitle as subtitle,news.image_url as image_url,
         news.content as content,news.date_time::text as date_time FROM news
-        WHERE news.title ILIKE $1 OR news.content ILIKE $2 OR news.content ILIKE $3
-        OR news.date_time::text ILIKE $4
-        ORDER BY news.date_time DESC
-        LIMIT $5 OFFSET $6`,
-        [`%${query}%`,`%${query}%`,`%${query}%`,`%${query}%`,ITEMS_PER_PAGE,offset]
-        );
+        WHERE (news.title ILIKE $1 OR news.content ILIKE $2 OR news.content ILIKE $3
+        OR news.date_time::text ILIKE $4)${timeFilter}
+        ${orderByClause}
+        LIMIT $5 OFFSET $6`;
 
-        return centents;
-        //OFFSET = how many first rows to skip : means OFFSET=20 first 20 rows skip 21-30 will be fetched
-        //ILIKE for search "Case-Insensitive" which is not in ms-sql server
-        //[`%${query}%`, `%${query}%`,`%${query}%`,`%${query}%`,ITEMS_PER_PAGE, offset]
+    const centents = await taiconn.query(sql, [
+      `%${query}%`,
+      `%${query}%`,
+      `%${query}%`,
+      `%${query}%`,
+      ITEMS_PER_PAGE,
+      offset,
+    ]);
 
-    }
-    catch(error) {
-        console.log('Database Error:',error);
-        throw new Error('Failed to fetch articles');
-    }
-    
+    return centents;
+    //OFFSET = how many first rows to skip : means OFFSET=20 first 20 rows skip 21-30 will be fetched
+    //ILIKE for search "Case-Insensitive" which is not in ms-sql server
+    //[`%${query}%`, `%${query}%`,`%${query}%`,`%${query}%`,ITEMS_PER_PAGE, offset]
+  } catch (error) {
+    console.log('Database Error:', error);
+    throw new Error('Failed to fetch articles');
+  }
 }
 
 export async function fetchSearchArticles(
@@ -645,15 +701,34 @@ export async function fetchSearchCategories(
 }
 
 /****************************   Fetch Total Search Site Content Pages **************************/
-export async function fetchSearchContentPages(query: string) {
+export async function fetchSearchContentPages(
+  query: string,
+  options?: {
+    time?: 'any' | '24h' | 'week' | 'month';
+  },
+) {
+  const time = options?.time || 'any';
+  let timeFilter = '';
+  if (time === '24h') {
+    timeFilter = " AND news.date_time >= NOW() - INTERVAL '1 day'";
+  } else if (time === 'week') {
+    timeFilter = " AND news.date_time >= NOW() - INTERVAL '7 days'";
+  } else if (time === 'month') {
+    timeFilter = " AND news.date_time >= NOW() - INTERVAL '1 month'";
+  }
+
   try {
-    const pageCount = await taiconn.query(`SELECT COUNT(*)
+    const sql = `SELECT COUNT(*)
     FROM news 
-        WHERE news.title ILIKE $1 OR news.content ILIKE $2
-        OR news.date_time::text ILIKE $3`,
-    [`%${query}%`,`%${query}%`,`%${query}%`]
-    );
-    
+        WHERE (news.title ILIKE $1 OR news.content ILIKE $2
+        OR news.date_time::text ILIKE $3)${timeFilter}`;
+
+    const pageCount = await taiconn.query(sql, [
+      `%${query}%`,
+      `%${query}%`,
+      `%${query}%`,
+    ]);
+
     const totalPages = Math.ceil(Number(pageCount.rows[0].count) / ITEMS_PER_PAGE);
     return totalPages;
   } catch (error) {
@@ -963,7 +1038,7 @@ export async function fetchPublishedNews(slug:string,lan:string) {
     
     try {
         if (lan === 'kk') {
-            articles = await taiconn.query(`SELECT n.id as id,auth.name as author_name,tr.title as title,tr.subtitle as subtitle,tr.content as content,n.slug as slug,n.image_url as image_path,
+            articles = await taiconn.query(`SELECT n.id as id,auth.name as author_name,auth.image_url as author_avatar,tr.title as title,tr.subtitle as subtitle,tr.content as content,n.slug as slug,n.image_url as image_path,
             n.section as section,n.view_count,n.date_time::text as date_time 
             FROM translations tr JOIN news n ON tr.news_id = n.id
                 JOIN authors auth ON n.author_id = auth.id
@@ -972,7 +1047,7 @@ export async function fetchPublishedNews(slug:string,lan:string) {
             );
         }
         else if (lan === 'ru') {
-            articles = await taiconn.query(`SELECT n.id as id,auth.name as author_name,tr.title as title,tr.subtitle as subtitle,tr.content as content,n.slug as slug,n.image_url as image_path,
+            articles = await taiconn.query(`SELECT n.id as id,auth.name as author_name,auth.image_url as author_avatar,tr.title as title,tr.subtitle as subtitle,tr.content as content,n.slug as slug,n.image_url as image_path,
             n.section as section,n.view_count,n.date_time::text as date_time 
             FROM translations tr JOIN news n ON tr.news_id = n.id
                 JOIN authors auth ON n.author_id = auth.id
@@ -981,7 +1056,7 @@ export async function fetchPublishedNews(slug:string,lan:string) {
             );
         }
         else {
-            articles = await taiconn.query(`SELECT news.id as id,authors.name as author_name,news.title as title,news.subtitle as subtitle,news.content as content,news.slug as slug,news.image_url as image_path,
+            articles = await taiconn.query(`SELECT news.id as id,authors.name as author_name,authors.image_url as author_avatar,news.title as title,news.subtitle as subtitle,news.content as content,news.slug as slug,news.image_url as image_path,
             news.section as section,news.view_count,news.date_time::text as date_time FROM news JOIN authors ON news.author_id = authors.id
             WHERE news.slug = $1`,
             [slug]
