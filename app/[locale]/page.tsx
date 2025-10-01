@@ -53,7 +53,7 @@ export default async function Home(props:{
           <HorizontalAdd key="hadd2" />,
           <Interview key="interview" langu = {locale} />,
           <Authors key="authors" langu = {locale} />
-        //otherComponents={[<Highlights />, <News title=" " />]} 
+        ]}
         allTopics = {<Alltopics />}
         />
       ) : (
