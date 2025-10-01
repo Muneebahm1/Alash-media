@@ -19,7 +19,8 @@ export default async function CategoryHeader({ ctquery, langu, selectedSubcat }:
     );
   }
 
-  const availableSubcats: string[] = categoryNews.rows.map((c: any) => c.subcategory_name);
+  type CategoryRow = { id: string; subcategory_name: string };
+  const availableSubcats: string[] = categoryNews.rows.map((c: CategoryRow) => c.subcategory_name);
   const subcat = selectedSubcat && availableSubcats.includes(selectedSubcat)
     ? selectedSubcat
     : categoryNews.rows[0].subcategory_name;
@@ -32,7 +33,7 @@ export default async function CategoryHeader({ ctquery, langu, selectedSubcat }:
             <h1 className="text-3xl font-bold">{ctquery}</h1>
             <div className='mt-4 border-y border-gray-200'>
               <div className='flex items-center gap-2 p-2 overflow-x-auto whitespace-nowrap'>
-                {categoryNews.rows.map((category: any) => {
+                {categoryNews.rows.map((category: CategoryRow) => {
                   const isActive = category.subcategory_name === subcat;
                   return (
                     <Link

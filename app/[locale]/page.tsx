@@ -14,14 +14,16 @@ import Authors from "../ui/home/authors";
 
 
 export default async function Home(props:{
-  params?: Promise<{locale?: string}>
+  params?: Promise<{ locale?: string }>
   searchParams?: Promise<{
     title?: string;
     searchquery: string;
     page?: string;
     pathName?: string;
-    
-    }>}) {
+    sort?: 'relevance' | 'newest' | 'oldest';
+    time?: 'any' | '24h' | 'week' | 'month';
+  }>
+}) {
   
   const params = await props.params;
   const locale = params?.locale || '';
@@ -29,8 +31,8 @@ export default async function Home(props:{
   //const searchSlug = searchParams?.title?.toString() || '';
   const tquery = searchParams?.searchquery || '';
   const tcurrentPage = Number(searchParams?.page) || 1;
-  const tsort = (searchParams as any)?.sort as ('relevance'|'newest'|'oldest') | undefined;
-  const ttime = (searchParams as any)?.time as ('any'|'24h'|'week'|'month') | undefined;
+  const tsort = searchParams?.sort;
+  const ttime = searchParams?.time;
   const totalPages = await fetchSearchContentPages(tquery, { time: ttime || 'any' });
     
   console.log(`Search Content Input Text = ${tquery}`);

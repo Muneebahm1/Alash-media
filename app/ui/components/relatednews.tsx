@@ -4,12 +4,18 @@ import { fetchCurrenthNews } from '@/app/lib/data';
 
 export const Relatednews = async ({ lang = '' }: { lang?: string }) => {
   const items = await fetchCurrenthNews(lang || '');
+  type NewsItem = {
+    id: string;
+    slug: string;
+    image_url?: string | null;
+    title: string;
+  };
   return (
     <section className="max-w-screen-xl mx-auto px-4">
       <div className="bg-white p-5 rounded">
         <h2 className="text-2xl font-bold mb-3">Related News</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-          {items.rows.map((n: any) => (
+          {items.rows.map((n: NewsItem) => (
             <Link key={n.id} href={`/newsdetail/${n.slug}`}>
               <div className="overflow-hidden">
                 <Image

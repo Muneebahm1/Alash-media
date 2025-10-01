@@ -18,22 +18,25 @@ import Category from "@/app/ui/home/category";
 import Footer from "./ui/components/footer";
 
 export default async function Home(props:{
-  params?: Promise<{locale?: string}>
+  params?: Promise<{ locale?: string }>
   searchParams?: Promise<{
     title?: string;
     searchquery: string;
     page?: string;
     pathName?: string;
     city: string;
-    }>}) {
+    sort?: 'relevance' | 'newest' | 'oldest';
+    time?: 'any' | '24h' | 'week' | 'month';
+  }>
+}) {
   
   const params = await props.params;
   const locale = params?.locale || '';
   const searchParams = await props.searchParams;
   const tquery = searchParams?.searchquery || '';
   const tcurrentPage = Number(searchParams?.page) || 1;
-  const tsort = (searchParams as any)?.sort as ('relevance'|'newest'|'oldest') | undefined;
-  const ttime = (searchParams as any)?.time as ('any'|'24h'|'week'|'month') | undefined;
+  const tsort = searchParams?.sort;
+  const ttime = searchParams?.time;
   const totalPages = await fetchSearchContentPages(tquery, { time: ttime || 'any' });
   console.log(`Search Content Input Text = ${tquery}`);
  //console.log(ctitle);
