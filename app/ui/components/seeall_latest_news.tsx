@@ -1,6 +1,5 @@
 import { fetchSeeLatestNews } from "@/app/lib/data";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server"; // for server components
 
 export default async function Seeall_Latest_News({lang}:{lang:string}) {
   const latestNews = await fetchSeeLatestNews(lang)
@@ -14,8 +13,6 @@ export default async function Seeall_Latest_News({lang}:{lang:string}) {
   
   const newsTime = newsDate.toLocaleTimeString();
 
- const t = await getTranslations({locale: lang, namespace: 'Headings'});
-
   return (
     <aside className='bg-white rounded w-[1/4] pb-14'>
         {
@@ -26,7 +23,6 @@ export default async function Seeall_Latest_News({lang}:{lang:string}) {
                      
           ))
         }
-               
     </aside>   
   )
 }

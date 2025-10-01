@@ -1,14 +1,13 @@
 'use client';
 
-import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import { useMemo, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 export default function TopicsSearch() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const pathname = usePathname();
   const initial = searchParams.get('tagname') || '';
   const [value, setValue] = useState(initial);
 

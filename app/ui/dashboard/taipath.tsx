@@ -19,7 +19,7 @@ const TaiPath = () => {
       params.set('pathName', pathName);
       router.replace(`?${params.toString()}`);
     }
-    },[pathName])
+  },[pathName, router, taiParams])
     return null;
     
 }

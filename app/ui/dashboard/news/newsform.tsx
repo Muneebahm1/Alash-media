@@ -54,7 +54,7 @@ const NewsForm = (
     }
     loadCategories();
   
-  },[])
+  },[news?.category_id])
 
   
   useEffect(()=>{
@@ -75,7 +75,7 @@ const NewsForm = (
     }
     loadSubCategories();
         
-  },[selectedCategoryId])
+  },[selectedCategoryId, news?.subcategory_id])
   
   useEffect(()=>{
     const loadTags = async () => {
