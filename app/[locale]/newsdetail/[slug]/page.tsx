@@ -12,23 +12,25 @@ export default async function page({
   params,
   searchParams,
 }: {
-  params: { slug: string; locale: string };
-  searchParams?: {
+  params: Promise<{ slug: string; locale: string }>;
+  searchParams?: Promise<{
     title?: string;
     searchquery?: string;
     page?: string;
     pathName?: string;
-    sort?: string;
-    time?: string;
-  };
+    sort?: 'relevance' | 'newest' | 'oldest';
+    time?: 'any' | '24h' | 'week' | 'month';
+  }>;
 }): Promise<ReactElement> {
-  const slug = params.slug;
-  const langu = params.locale;
+  const awaitedParams = await params;
+  const awaitedSearch = (await searchParams) || {};
+  const slug = awaitedParams.slug;
+  const langu = awaitedParams.locale;
   
-  const tquery = searchParams?.searchquery || '';
-  const tcurrentPage = Number(searchParams?.page) || 1;
-  const tsort = (searchParams?.sort as 'relevance' | 'newest' | 'oldest') || 'relevance';
-  const ttime = (searchParams?.time as 'any' | '24h' | 'week' | 'month') || 'any';
+  const tquery = awaitedSearch.searchquery || '';
+  const tcurrentPage = Number(awaitedSearch.page) || 1;
+  const tsort = awaitedSearch.sort || 'relevance';
+  const ttime = awaitedSearch.time || 'any';
   const totalPages = await fetchSearchContentPages(tquery, { time: ttime });
   const newsDetail = await fetchPublishedNews(slug, langu);
   

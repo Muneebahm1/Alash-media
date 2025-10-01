@@ -15,25 +15,25 @@ async function getUser(email: string): Promise<User | undefined> {
         return user[0];
     }
     catch(error) {
-        console.log('Failed to fetch user:',error);
         throw new Error('Failed to fetch user');
     }
     
 };
-
-export const {auth,signIn,signOut} = NextAuth({
+export const { auth, signIn, signOut, handlers } = NextAuth({
     ...authConfig,
     providers: [
         Credentials({
             async authorize(credentials) {
-                const parsedCredentials = z.object({email: z.string().email(),password: z.string().min(5)}).safeParse(credentials);
+                const parsedCredentials = z
+                  .object({ email: z.string().email(), password: z.string().min(5) })
+                  .safeParse(credentials);
                 if (parsedCredentials.success) {
-                    const {email,password} = parsedCredentials.data;
+                    const { email, password } = parsedCredentials.data;
                     const user = await getUser(email);
                     if (!user) return null;
-                    const passwordMatch = await bcrypt.compare(password,user.password);
+                    const passwordMatch = await bcrypt.compare(password, user.password);
                     if (passwordMatch) return user;
-                        return null
+                    return null;
                 }
                 return null;
             },
