@@ -118,16 +118,16 @@ export default function MobileMenu() {
               <Search variant="menu" />
             </div>
 
-            {/* Login link styled as row */}
+            {/* Login link styled as row (use plain anchor to avoid locale prefix) */}
             <div>
-              <Link href="/login" onClick={() => setOpen(false)}>
+              <a href="/login" onClick={() => setOpen(false)}>
                 <div className="flex items-center justify-between py-3 px-2 text-white border-t border-white/15">
                   <span>Log In</span>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-80">
                     <path d="M9 18L15 12L9 6" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

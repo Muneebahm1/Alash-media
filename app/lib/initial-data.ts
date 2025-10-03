@@ -101,7 +101,7 @@ const news = [
         subtitle: `subtitle goes here gravida ullamcorper rutrum. Aenean rutrum nibh ipsum,
          at vehicula arcu sagittis non. Quisque accumsan sagittis libero,
          sit amet aliquet nunc aliquam vitae.`,
-        image_url: '/images/hero top news/news1.png',
+        image_url: '/images/Top News/news1.png',
         content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras felis sem, consectetur sit amet lorem ut, consequat aliquam nunc. Aliquam dignissim tellus ex, vel imperdiet dolor interdum sit amet. Cras porttitor consectetur lectus et ullamcorper. Sed gravida sapien in ante pretium, vitae molestie libero malesuada. Sed mollis consectetur est, eget volutpat nisl bibendum sit amet. Aliquam euismod eget lectus quis dapibus. Nunc vel ligula eget orci viverra iaculis eu quis ante. In sed dictum lectus. Integer id arcu feugiat, vestibulum velit quis, congue lacus.
 
         Nam consectetur efficitur arcu, in tempus nibh mattis eget. Nunc non dignissim lacus. In imperdiet leo non dolor aliquet rhoncus. Nunc luctus dignissim dolor, ut tempor lorem. Fusce ultricies nisl vel mollis pharetra. Sed quis metus vitae quam mollis mattis id non elit. Ut ultrices nunc eu diam venenatis venenatis eget quis odio. Pellentesque ut odio mi. Integer hendrerit porttitor facilisis. Duis nunc augue, laoreet quis finibus at, pretium sit amet nulla. Integer tempor felis a ligula volutpat, et malesuada ex iaculis. Vestibulum porta sapien sit amet viverra semper. Nulla eu urna a nunc gravida semper. Donec eu quam id tortor feugiat pharetra at quis felis. Nullam a bibendum erat, et porttitor sapien.
@@ -128,7 +128,7 @@ const news = [
         subtitle: `Subtitle goes here Duis et fringilla dui, eget fermentum neque. 
         Praesent rutrum sed felis eu tincidunt. 
         Praesent pulvinar nisl nunc`,
-        image_url: '/images/top news/news2.png',
+        image_url: '/images/Top News/news2.png',
         content: `Integer et felis eu nisl gravida vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum finibus dolor nec mollis. Aliquam a gravida sapien. Donec rhoncus elit nec velit maximus porttitor. Aenean at tempus orci. Nullam at ante molestie, faucibus magna eget, ultrices nisl. Mauris eleifend, lectus sit amet malesuada auctor, velit magna consectetur quam, quis commodo orci ante ut est. Phasellus nulla ligula, imperdiet eget tellus id, volutpat congue orci. Fusce posuere velit eu ultricies molestie. Cras dignissim nulla sit amet metus faucibus dapibus. Ut vulputate semper pulvinar.
 
 Maecenas commodo leo non ex finibus suscipit. Vestibulum turpis lorem, egestas sit amet augue vel, vehicula pellentesque ante. Fusce vitae lectus nisi. Morbi at laoreet augue, nec rutrum augue. Fusce quis lacinia elit, a elementum lacus. Phasellus pharetra, nulla vel ultricies suscipit, ligula tortor gravida mauris, malesuada iaculis massa orci non nulla. Aliquam sodales et dolor id egestas. Sed enim nisi, porttitor nec congue vel, egestas et nunc. Vivamus pellentesque, tortor in ultricies suscipit, lectus orci maximus urna, at fermentum magna augue eu massa. Nunc a urna porta, blandit magna et, aliquam turpis. Proin tincidunt lacus non consequat aliquam. Sed est felis, gravida rutrum dui nec, pulvinar ornare turpis. Maecenas vitae metus vel lectus dapibus pharetra ac in magna. Sed accumsan purus sapien, quis vulputate enim lacinia sit amet. Quisque commodo elit vel mattis interdum. Curabitur accumsan libero nisl, quis venenatis tellus eleifend at.
@@ -152,7 +152,7 @@ date_time: '2025-06-12 11:10:00',
         Suspendisse potenti. Integer facilisis mi ac eros ornare.`,
         subtitle: `Subtitle goes here Suspendisse placerat mattis ipsum vel ultricies. 
         Suspendisse potenti. Integer facilisis mi ac eros ornare.`,
-        image_url: '/images/top news/news3.png', 
+        image_url: '/images/Top News/news3.png', 
         content: `Content of actual news starts from here 
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
@@ -172,7 +172,7 @@ Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
         Phasellus id eros ac metus tincidunt posuere id.`,
         subtitle: `Subtitle goes here Etiam fringilla ac magna in molestie. 
         Phasellus id eros ac metus tincidunt posuere id.`,
-        image_url: '/images/top news/news4.png',
+        image_url: '/images/Top News/news4.png',
         content: `Content of actual news starts from here fringilla nisl egestas, sodales est. In mollis nisl eu nulla tempus egestas in et nibh. Pellentesque posuere lorem vitae lectus dictum volutpat. Curabitur congue ante a orci dictum, ut tincidunt mauris pulvinar. Vivamus pulvinar vel lectus ut finibus. Fusce rhoncus mollis malesuada. Nunc id justo ac arcu pulvinar rhoncus nec a sem. Sed commodo ipsum ante, eu aliquam ipsum tristique quis. Maecenas iaculis nunc quis tempor luctus. In hac habitasse platea dictumst. Nam rhoncus justo eget odio fringilla ornare. Integer dignissim ullamcorper nisl vitae blandit.`,
         slug: 'etiam-fringilla-ac-magna-in-molestie',
         section: 'Top News',

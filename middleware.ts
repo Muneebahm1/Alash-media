@@ -31,6 +31,13 @@ export default auth(async (request: NextRequest) => {
   if (isPublicPath) {
     return NextResponse.next();
   }
+
+  // Special-case: locale-prefixed login should route to non-prefixed /login
+  const loginLocaleMatch = currentPath.match(/^\/(en|ur|kk|ru)\/login$/);
+  if (loginLocaleMatch) {
+    const url = new URL('/login', request.url);
+    return NextResponse.rewrite(url);
+  }
    
   // --- Step 2: Handle Authenticated but not locale-prefixed paths ---
   // If `request.auth` is available, it means the user is authenticated by NextAuth.
