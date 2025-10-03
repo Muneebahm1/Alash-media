@@ -9,8 +9,8 @@ import { routing } from '@/i18n/routing';
 const {auth} =  NextAuth(authConfig);
 
 // --- 2. Define Public Paths (Non-localized & Non-authenticated) ---
+// Do NOT include '/' here so next-intl can redirect it to the default locale (e.g., '/en').
 const PUBLIC_PATHS = [
-  '/',
   '/login', // Your login page
 ];
 
