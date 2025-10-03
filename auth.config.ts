@@ -5,17 +5,15 @@ export const authConfig = {
         signIn: '/login',
     },
     callbacks: {
-        authorized({auth,request: {nextUrl}}) {
-        const loggedIn = !!auth?.user;
-        const onDashboard = nextUrl.pathname.startsWith('/dashboard');
-        if (onDashboard) {
-            if (loggedIn) return true
-                return false;
-        }
-        else if (loggedIn) {
-            return Response.redirect(new URL('/dashboard',nextUrl));
-        }
-            return true;    
+        authorized({ auth, request: { nextUrl } }) {
+            const loggedIn = !!auth?.user;
+            const onDashboard = nextUrl.pathname.startsWith('/dashboard');
+            // Only protect dashboard routes. Do not redirect globally to avoid loops.
+            if (onDashboard) {
+                return loggedIn;
+            }
+            // Public for all other routes
+            return true;
         },
     },
     providers:[],
