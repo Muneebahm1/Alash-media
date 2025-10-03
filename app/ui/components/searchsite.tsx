@@ -1,5 +1,5 @@
 'use client';
-import { useSearchParams,usePathname,useRouter, redirect } from "next/navigation";
+import { useSearchParams,usePathname,useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import { FiSearch} from "react-icons/fi";
 import { useState,ChangeEvent } from "react";
@@ -44,7 +44,8 @@ const SearchSite = () => {
               <button className="absolute right-2 top-2 cursor-pointer"
               onClick={()=> {
                 handleClearInput();
-                redirect('/');
+                // Use client-side navigation; next-intl/middleware will add the locale prefix
+                replace('/');
               }}
               >
                 <IoMdCloseCircle size={23} />

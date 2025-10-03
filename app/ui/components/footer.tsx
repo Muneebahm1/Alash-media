@@ -1,5 +1,5 @@
 'use client';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { PiWhatsappLogo, PiInstagramLogo,PiTwitterLogo,PiTelegramLogo } from "react-icons/pi";
 import { BiLogoVk } from "react-icons/bi";
@@ -77,13 +77,16 @@ const Footer = () => {
                     <h2 className='font-bold'>Category</h2>
                     <div className='flex flex-col space-y-4 pb-4 opacity-75'>
                     {
-                        MainLinks.map((link)=> {
-                        return(
-                            <Link key={link.id} href={link.href}>
-                                <p>{t(`HeaderLinks.${link.name}`)}</p>
-                            </Link>             
+                      MainLinks.map((link)=> {
+                        const href = link.name === 'Special Project'
+                          ? `/specialproject/?category_name=${link.name}`
+                          : `/category/?category_name=${link.name}`;
+                        return (
+                          <Link key={link.id} href={href}>
+                            <p>{t(`HeaderLinks.${link.name}`)}</p>
+                          </Link>
                         )
-                    })
+                      })
                     }
                     {/* Direct link to Authors page */}
                     <Link href={'/authors'}>

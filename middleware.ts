@@ -42,14 +42,16 @@ export default auth(async (request: NextRequest) => {
     return NextResponse.next(); // User is authenticated and on a dashboard path, proceed directly.
   }
 
-  // --- Step 3: Apply next-intl Middleware for Localized Paths ---
-  // If we reach here, it means:
-  // 1. It's not a public path.
-  // 2. Auth has already run (because this entire function is wrapped by `auth()`).
-  // 3. It's not a dashboard-like path that bypasses locale prefixing.
-  // So, it's a path that should be localized (e.g., /home, /projects).
-  // The `next-intl` middleware will now handle locale detection and URL rewriting.
-  return nextIntlMiddleware(request);
+  // --- Step 3: Apply next-intl Middleware only for NON-locale-prefixed paths ---
+  // Prevent ping-pong by skipping next-intl when a locale is already present in the URL.
+  const isLocalePrefixed = /^\/(en|ur|kk|ru)(\/|$)/.test(currentPath);
+  if (!isLocalePrefixed) {
+    // Let next-intl detect and add the locale prefix
+    return nextIntlMiddleware(request);
+  }
+
+  // Already locale-prefixed; continue without next-intl to avoid loops
+  return NextResponse.next();
 });
 
 export const config = {
