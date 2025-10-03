@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
+import NextLink from "next/link";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import { NavLinks } from "./subheader";
@@ -118,16 +119,16 @@ export default function MobileMenu() {
               <Search variant="menu" />
             </div>
 
-            {/* Login link styled as row (use plain anchor to avoid locale prefix) */}
+            {/* Login link styled as row */}
             <div>
-              <a href="/login" onClick={() => setOpen(false)}>
+              <NextLink href="/login" locale={false} onClick={() => setOpen(false)}>
                 <div className="flex items-center justify-between py-3 px-2 text-white border-t border-white/15">
                   <span>Log In</span>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-80">
                     <path d="M9 18L15 12L9 6" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
-              </a>
+              </NextLink>
             </div>
           </div>
         </div>

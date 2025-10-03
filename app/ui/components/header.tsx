@@ -1,5 +1,6 @@
 'use client';
 import Image from "next/image";
+import NextLink from "next/link";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import dynamic from 'next/dynamic'
@@ -36,14 +37,14 @@ const Header = () => {
             <DynamicLocaleSwitcher />
           </header>
           {/* Hide Login on mobile; shown on desktop (Login will appear in mobile menu) */}
-          <a href="/login" className="hidden md:block text-gray-800 hover:text-[#00A759]">
+          <NextLink href="/login" locale={false} className="hidden md:block text-gray-800 hover:text-[#00A759]">
             <div className="relative inline-block group">    
               <p className='text-gray-800 hover:text-[#00A759]'>Log In</p>
               <div className="absolute bottom-[-4] left-0 h-1 w-full bg-transparent overflow-hidden">
                 <div className="h-full bg-[#D82825] w-0 group-hover:w-full transition-width duration-500 ease-out"></div>
               </div>
             </div>
-          </a>
+          </NextLink>
           {/* Mobile hamburger menu on the right */}
           <div className="md:hidden">
             <MobileMenu />
